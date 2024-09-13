@@ -20,7 +20,7 @@ jobs:
           java-version: 17
 
       - name: Build
-        run: |
+        run: ./app/src/
           chmod +x ./gradlew
           ./gradlew build
       - name: Upload Build Artifact
