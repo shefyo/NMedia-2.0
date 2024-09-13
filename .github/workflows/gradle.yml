@@ -20,9 +20,7 @@ jobs:
           java-version: 17
 
       - name: Build
-        run: ./app/src/
-          chmod +x ./gradlew
-          ./gradlew build
+        run: gradle
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
