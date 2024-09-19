@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.OnInteractionListener
@@ -67,6 +68,14 @@ class FeedFragment : Fragment() {
             adapter.submitList(state.posts)
             binding.emptyText.isVisible = state.empty
         }
+        viewModel.newerCount.observe(viewLifecycleOwner) {
+            binding.newButton.isVisible = it > 0
+        }
+
+        binding.newButton.setOnClickListener {
+            binding.list.smoothScrollToPosition(0)
+        }
+
 
         binding.swiperefresh.setOnRefreshListener {
             viewModel.refreshPosts()
